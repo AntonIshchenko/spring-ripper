@@ -9,6 +9,7 @@
 
     <context:annotation-config/>
 
+    <bean class="quoters.ProfilingHandlerBeanPostProcessor"/>
     <bean class="quoters.InjectRandomIntAnnotationBeanProcessor"/>
 
     <bean class="quoters.TerminatorQuoter" id="terminatorQuoter">
