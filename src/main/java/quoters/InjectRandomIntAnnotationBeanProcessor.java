@@ -18,14 +18,14 @@ public class InjectRandomIntAnnotationBeanProcessor implements BeanPostProcessor
                 Random random = new Random();
                 int i = min + random.nextInt(max - min);
                 field.setAccessible(true);
-                ReflectionUtils.setField(field,bean,i);
+                ReflectionUtils.setField(field, bean, i);
             }
         }
         return bean;
     }
 
     @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName)  {
+    public Object postProcessAfterInitialization(Object bean, String beanName) {
         return bean;
     }
 }

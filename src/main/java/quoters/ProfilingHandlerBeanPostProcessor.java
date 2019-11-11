@@ -2,8 +2,8 @@ package quoters;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
-
-import javax.management.*;
+import javax.management.MBeanServer;
+import javax.management.ObjectName;
 import java.lang.management.ManagementFactory;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -11,7 +11,7 @@ import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProfilingHandlerBeanPostProcessor implements BeanPostProcessor  {
+public class ProfilingHandlerBeanPostProcessor implements BeanPostProcessor {
 
     private Map<String, Class> map = new HashMap<>();
     private ProfilingController controller = new ProfilingController();
@@ -19,7 +19,7 @@ public class ProfilingHandlerBeanPostProcessor implements BeanPostProcessor  {
     public ProfilingHandlerBeanPostProcessor() throws Exception {
         MBeanServer platformMBeanServer = ManagementFactory.getPlatformMBeanServer();
         platformMBeanServer.registerMBean(controller,
-                new ObjectName("profiling","name","controller"));
+                new ObjectName("profiling", "name", "controller"));
     }
 
     @Override
